@@ -6,6 +6,7 @@ import { AuthRouter } from './AuthRouter';
 import { useDispatch } from 'react-redux';
 import {loginAuthAction} from '../redux/actions/authActions';
 import {DashboardScreen} from '../pages/dashboard/DashboardScreen';
+import {MfeComponent} from 'mfe/MfeComponent';
 
 
 export const AppRouter = () => {
