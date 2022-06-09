@@ -6,7 +6,7 @@
     module.exports = {
     mode: "production",
     output: {
-        publicPath: "https://react-shell-jwt.herokuapp.com/",
+        publicPath: "http://localhost:8080",
         chunkFilename: "[name].[contenthash].js",
         filename: "[name].[contenthash].js",
     },
@@ -49,7 +49,7 @@
         name: "react_shell_jwt",
         filename: "remoteEntry.js",
         remotes:{
-            mfe:'mfe@https://react-mfe1-jwt.herokuapp.com/remoteEntry.js'
+            mfe:'mfe@http://localhost:8080/remoteEntry.js'
         },
         shared: {
             ...deps,

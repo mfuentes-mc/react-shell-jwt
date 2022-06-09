@@ -1,12 +1,12 @@
 import React, {useState,useEffect} from 'react'
-import {BrowserRouter as Router,Switch,Redirect} from 'react-router-dom';
+import { Route, Routes, Navigate } from "react-router-dom";
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { AuthRouter } from './AuthRouter';
 import { useDispatch } from 'react-redux';
 import {loginAuthAction} from '../redux/actions/authActions';
 import {DashboardScreen} from '../pages/dashboard/DashboardScreen';
-import {MfeComponent} from 'mfe/MfeComponent';
+
 
 
 export const AppRouter = () => {
@@ -30,22 +30,27 @@ export const AppRouter = () => {
         )
     }
   return (
-    <Router>
-        <Switch>
-            <PublicRoute 
-                path="/auth"
-                component={ AuthRouter }
-                isAuthenticated={ isLoggedIn }
-            />
-             <PrivateRoute 
-                        exact
-                        isAuthenticated={ isLoggedIn }
-                        path="/"
-                        component={ DashboardScreen }
-                    />
+    <Routes>
+        {!isLoggedIn && (
+        <Route
+          path="/auth"
+          element={<AuthRouter authenticate={() => setAuth(true)} />}
+        />
+      )}
 
-            <Redirect to="/auth/login" />
-        </Switch>
-    </Router>
+        <PublicRoute 
+            path="/auth"
+            component={ AuthRouter }
+            isAuthenticated={ isLoggedIn }
+        />
+            <PrivateRoute 
+                    exact
+                    isAuthenticated={ isLoggedIn }
+                    path="/"
+                    component={ DashboardScreen }
+                />
+
+        <Route path="*" element={<Navigate to={isLoggedIn ? "/" : "/auth"} />} />  
+    </Routes>
   )
 }
