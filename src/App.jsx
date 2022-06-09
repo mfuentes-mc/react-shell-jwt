@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import "./index.css";
 
-const App = () => (
-  <div className="container">
-    <div>Name: react-shell-jwt</div>
-    <div>Framework: react</div>
-    <div>Language: JavaScript</div>
-    <div>CSS: Empty CSS</div>
-  </div>
-);
+
+
+const App = () => {
+  return (
+      <h1>HOLA MUNDO</h1>    
+  )
+}
 ReactDOM.render(<App />, document.getElementById("app"));
