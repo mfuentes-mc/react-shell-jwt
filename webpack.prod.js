@@ -6,18 +6,13 @@
     module.exports = {
     mode: "production",
     output: {
-        publicPath: "http://localhost:3000",
+        publicPath: "https://react-shell-jwt.herokuapp.com/",
         chunkFilename: "[name].[contenthash].js",
         filename: "[name].[contenthash].js",
     },
 
     resolve: {
         extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-    },
-
-    devServer: {
-        port: 3000,
-        historyApiFallback: true,
     },
 
     module: {
