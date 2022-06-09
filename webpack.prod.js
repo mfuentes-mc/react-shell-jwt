@@ -48,7 +48,8 @@
         new ModuleFederationPlugin({
         name: "react_shell_jwt",
         filename: "remoteEntry.js",
-        remotes: {
+        remotes:{
+            mfe:'mfe@http://react-mfe1-jwt.herokuapp.com/remoteEntry.js'
         },
         shared: {
             ...deps,

@@ -4,7 +4,7 @@
 
     const deps = require("./package.json").dependencies;
     module.exports = {
-    mode: "production",
+    mode: "development",
     output: {
         publicPath: "http://localhost:3000/",
         chunkFilename: "[name].[contenthash].js",
@@ -51,21 +51,23 @@
 
     plugins: [
         new ModuleFederationPlugin({
-        name: "react_shell_jwt",
-        filename: "remoteEntry.js",
-        remotes: {
-        },
-        shared: {
-            ...deps,
-            react: {
-            singleton: true,
-            requiredVersion: deps.react,
+            name: "react_shell_jwt",
+            library: { type: 'var', name: 'react_shell_jwt' },
+            filename: "remoteEntry.js",
+            remotes:{
+                mfe:'mfe@http://localhost:3001/remoteEntry.js'
             },
-            "react-dom": {
-            singleton: true,
-            requiredVersion: deps["react-dom"],
+            shared: {
+                ...deps,
+                react: {
+                singleton: true,
+                requiredVersion: deps.react,
+                },
+                "react-dom": {
+                singleton: true,
+                requiredVersion: deps["react-dom"],
+                },
             },
-        },
         }),
         new HtmlWebPackPlugin({
         template: "./src/index.html",
