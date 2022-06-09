@@ -6,7 +6,7 @@
     module.exports = {
     mode: "production",
     output: {
-        publicPath: "http://localhost:3000",
+        publicPath: "http://localhost:3000/",
         chunkFilename: "[name].[contenthash].js",
         filename: "[name].[contenthash].js",
     },
