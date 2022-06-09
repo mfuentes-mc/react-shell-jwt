@@ -49,7 +49,7 @@
         name: "react_shell_jwt",
         filename: "remoteEntry.js",
         remotes:{
-            mfe:'mfe@http://react-mfe1-jwt.herokuapp.com/remoteEntry.js'
+            mfe:'mfe@https://react-mfe1-jwt.herokuapp.com/remoteEntry.js'
         },
         shared: {
             ...deps,
