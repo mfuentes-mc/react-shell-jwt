@@ -6,7 +6,7 @@
     module.exports = {
     mode: "development",
     output: {
-        publicPath: "auto",
+        publicPath: "http://localhost:3000/",
         chunkFilename: "[name].[contenthash].js",
         filename: "[name].[contenthash].js",
     },
@@ -52,10 +52,9 @@
     plugins: [
         new ModuleFederationPlugin({
             name: "react_shell_jwt",
-            library: { type: 'umd' },
             filename: "remoteEntry.js",
             remotes:{
-                mfe:'mfe@http://localhost:3001/remoteEntry.js'
+                react_mfe1_jwt: 'react_mfe1_jwt@http://localhost:3001/remoteEntry.js'
             },
             shared: {
                 ...deps,
